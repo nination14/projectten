@@ -1,43 +1,39 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import {
+  BrowserRouter,
+  Route,
+  Switch,
+  Redirect
+} from 'react-router-dom';
 
+import "./App.css";
+import withContext from './Context';
+import Header from "./components/Header";
+import Courses from "./components/Courses";
+import CourseDetail from "./components/CourseDetail";
+
+const CoursesWithContext = withContext(Courses);
+const CourseDetailWithContext = withContext(CourseDetail);
 class App extends Component {
 
-  state = {
-    courses: []
-  }
 
-  componentDidMount() {
-    fetch('http://localhost:5000/api/courses')
-      .then(response => response.json())
-      .then(courses => { 
-        this.setState({courses});
-      });
-    
-  }
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          <ul>
-            { this.state.courses.map( course => <li>{ course.title }</li>) }
-          </ul>
-        </header>
-      </div>
+      <BrowserRouter>
+        <div>
+          <Switch>
+            <Route exact path="/" render={ props => <Header title="Courses" {...props} />}/>
+            <Route path="/courses/new" render={ props => <Header title="New Course" {...props} />}/>
+            <Route path="/courses/:id" render={ props => <Header title="Course Detail" {...props} />}/>
+            <Route path="/" render={ props => <Header title="Adventures in Limbo" {...props} />}/>
+          </Switch>
+          <Switch>
+            <Route exact path="/" component={CoursesWithContext} />
+            <Route path="/courses/:id" component={CourseDetailWithContext} />
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
   }
 }
