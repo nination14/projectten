@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
 function Header(props) {
 
@@ -9,7 +10,7 @@ function Header(props) {
               <h1 className="header--logo">Super Nina's Super-Fun  { props.title }</h1>
               <nav>
                   <a className="signup" href="sign-up.html">Sign Up</a>
-                  <a className="signin" href="sign-in.html">Sign In</a>
+                  <Link className="signin" to="/signIn">Sign In</Link>
               </nav>
           </div>
       </div>

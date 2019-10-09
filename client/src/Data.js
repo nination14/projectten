@@ -1,10 +1,9 @@
 import config from './config';
 const baseUrl = config.baseUrl;
 
-
 class Data {
 
-    api(path, method, body = null) {
+    api(path, method, body = null, requiresAuth = false, credentials) {
         const url = `${baseUrl}${path}`
         const options = {
             method,
@@ -13,14 +12,30 @@ class Data {
             }
         };
 
+        if (requiresAuth) {
+            const encodedCredentials = btoa(`${credentials.username}:${credentials.password}`);
+            options.headers['Authorization'] = `Basic ${encodedCredentials}`;
+        }
+
         if (body !== null) {
             options.body = JSON.stringify(body);
         }
         return fetch(url, options);
     }
 
-    async getUser() {
-        // ...
+    async getUser(username, password) {
+        const response = await this.api(`/users`, 'GET', null, true, {username, password});
+        if (response.status === 200) {
+            return await response.json()
+        } else if (response.status === 401) {
+            return null;
+        } else {
+            // Uh oh, we had an unrecognized error!!
+            console.error(`API call returned status ${response.status}`);
+            const error = new Error();
+            error.status = response.status;
+            throw error;
+        }
     } 
 
     async createUser() {

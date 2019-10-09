@@ -7,11 +7,28 @@ export class Provider extends Component {
     constructor() {
         super();
         this.data = new Data();
+        this.state = {
+            authorizedUser: null
+        }
     }   
+
+    /**
+     * Returns the user if sign in was successful. Otherwise, returns null
+     * @param {*} email 
+     * @param {*} password 
+     */
+    async signIn(email,password) {
+        const user = await this.data.getUser(email, password);
+        if (user) user.password = password;
+        this.setState({ authorizedUser: user });
+        return user;
+    }
 
     render() {
         const value = {
-            data: this.data
+            data: this.data,
+            authorizedUser: this.state.authorizedUser,
+            signIn: (email, password) => this.signIn(email, password)
         };
         return (
             <Context.Provider value={ value }>
