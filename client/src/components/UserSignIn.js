@@ -39,7 +39,7 @@ class UserSignIn extends Component {
                     <form onSubmit={ event => this.handleSubmit(event) }>
                     <div><input id="emailAddress" name="emailAddress" type="text" className="" placeholder="Email Address" value={this.state.emailAddress} onChange={ (event) => this.handleChange(event) }/></div>
                     <div><input id="password" name="password" type="password" className="" placeholder="Password" value={this.state.password} onChange={ (event) => this.handleChange(event)}/></div>
-                    <div className="grid-100 pad-bottom"><button className="button" type="submit">Sign In</button><Link className="button button-secondary" to="/">Cancel</Link></div>
+                    <div className="grid-100 pad-bottom"><button className="button" type="submit">Sign In</button> <Link className="button button-secondary" to="/">Cancel</Link></div>
                     </form>
                 </div>
                 <p>&nbsp;</p>
