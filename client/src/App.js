@@ -12,10 +12,12 @@ import Header from "./components/Header";
 import Courses from "./components/Courses";
 import CourseDetail from "./components/CourseDetail";
 import UserSignIn from "./components/UserSignIn";
+import UserSignUp from "./components/UserSignUp";
 
 const CoursesWithContext = withContext(Courses);
 const CourseDetailWithContext = withContext(CourseDetail);
 const UserSignInWithContext = withContext(UserSignIn);
+const UserSignUpWithContext = withContext(UserSignUp);
 
 class App extends Component {
 
@@ -30,11 +32,13 @@ class App extends Component {
             <Route path="/courses/new" render={ props => <Header title="New Course" {...props} />}/>
             <Route path="/courses/:id" render={ props => <Header title="Course Detail" {...props} />}/>
             <Route path="/" render={ props => <Header title="Adventures in Limbo" {...props} />}/>
+              
           </Switch>
           <Switch>
             <Route exact path="/" component={CoursesWithContext} />
             <Route path="/signIn" component={ UserSignInWithContext } />
             <Route path="/courses/:id" component={CourseDetailWithContext} />
+            <Route path="/signUp" component={UserSignUpWithContext} />
           </Switch>
 
         </div>

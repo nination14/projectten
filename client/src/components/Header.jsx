@@ -9,7 +9,7 @@ function Header(props) {
           <div className="bounds">
               <h1 className="header--logo">Super Nina's Super-Fun  { props.title }</h1>
               <nav>
-                  <a className="signup" href="sign-up.html">Sign Up</a>
+                  <Link className="signup" to="/signUp">Sign Up</Link>
                   <Link className="signin" to="/signIn">Sign In</Link>
               </nav>
           </div>

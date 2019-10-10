@@ -20,7 +20,7 @@ class Data {
         if (body !== null) {
             options.body = JSON.stringify(body);
         }
-        return fetch(url, options);
+            return fetch(url, options);
     }
 
     async getUser(username, password) {
@@ -38,8 +38,18 @@ class Data {
         }
     } 
 
-    async createUser() {
-        // ...
+    /**
+     * Returns a list of errors that occurred (if any) while creating the user
+     * @param {*} user 
+     */
+    async createUser(user) {
+        const response = await this.api(`/users`, 'POST') 
+        if (response.status === 201) {
+           return [];
+        } else if (response.status === 400) {
+            const responseBody = await response.json();
+            return responseBody.errors;
+        }
     }
 
     async getCourses() {
