@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ErrorMessages from './ErrorMessages';
 import { Link } from 'react-router-dom';
 
-class UserSignIn extends Component {
+export default class UserSignIn extends Component {
 
     state = {
         emailAddress: '',
@@ -12,7 +12,11 @@ class UserSignIn extends Component {
 
     handleChange(event) {
         const newState = {};
-        newState[event.target.name] = event.target.value;
+        // newState[event.target.name] = event.target.value;
+
+        newState[event.target.name] = event.target.name;                //10-15
+        newState[event.target.value] = event.target.value;
+
         this.setState(newState);
     }
 
@@ -49,5 +53,3 @@ class UserSignIn extends Component {
         );
     }
 }
-
-export default UserSignIn; 

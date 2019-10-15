@@ -8,11 +8,12 @@ export class Provider extends Component {
     constructor() {
         super();
         this.data = new Data();
-        this.state = {
-            authorizedUser:Cookies.getJSON('authorizedUser') || null
-        }
-    }   
-
+        
+    }
+    state = {
+        authorizedUser:Cookies.getJSON('authorizedUser') || null   
+    }
+    
     /**
      * Returns the user if sign in was successful. Otherwise, returns null
      * @param {*} email 
@@ -24,6 +25,12 @@ export class Provider extends Component {
         Cookies.set('authorizedUser', JSON.stringify(user));
         this.setState({ authorizedUser: user });
         return user;
+    }
+
+    signOut() {
+        this.setState({ authorizedUser: null });
+        Cookies.remove('authorizedUser'); 
+        
     }
 
     render() {

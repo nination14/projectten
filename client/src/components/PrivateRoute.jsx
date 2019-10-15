@@ -2,7 +2,7 @@ import React from 'react';
 import { Consumer } from '../Context';
 import { Route, Redirect } from 'react-router-dom'
 
-export default function SecuredRoute({ component: Component, ...otherProps}) {
+export default function PrivateRoute({ component: Component, ...otherProps}) {
     
     return (
         <Consumer>

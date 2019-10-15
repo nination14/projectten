@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-class Courses extends Component {
+export default class Courses extends Component {
 
     state = {
         courses: []
@@ -35,5 +35,3 @@ class Courses extends Component {
         );
     }
 }
-
-export default Courses;
