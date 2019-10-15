@@ -27,7 +27,7 @@ export class Provider extends Component {
         return user;
     }
 
-    signOut() {
+    signOut =() => {
         this.setState({ authorizedUser: null });
         Cookies.remove('authorizedUser'); 
         
@@ -37,7 +37,8 @@ export class Provider extends Component {
         const value = {
             data: this.data,
             authorizedUser: this.state.authorizedUser,
-            signIn: (email, password) => this.signIn(email, password)
+            signIn: (email, password) => this.signIn(email, password),
+            signOut: this.signOut
         };
         return (
             <Context.Provider value={ value }>

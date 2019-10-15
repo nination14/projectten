@@ -36,7 +36,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-        <HeaderWithContext />
+          <HeaderWithContext />
           <Switch>
             {/* <Route exact path="/" render={ props => <Header title="Courses" {...props} />}/> */}
             <Route path="/courses/new" render={ props => <Header title="New Course" {...props} />}/>

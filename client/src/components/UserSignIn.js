@@ -12,10 +12,10 @@ export default class UserSignIn extends Component {
 
     handleChange(event) {
         const newState = {};
-        // newState[event.target.name] = event.target.value;
+        newState[event.target.name] = event.target.value;
 
-        newState[event.target.name] = event.target.name;                //10-15
-        newState[event.target.value] = event.target.value;
+        // newState[event.target.name] = event.target.name;                //10-15
+        // newState[event.target.value] = event.target.value;
 
         this.setState(newState);
     }

@@ -13,32 +13,15 @@ function Header(props) {
     console.log(authorizedUser);
   }
   
-  
-  // return (
-  //   <Fragment>
-  //     <div className="header">
-  //         <div className="bounds">
-  //             <h1 className="header--logo">Super Nina's Super-Fun  { props.title }</h1>
-  //             <nav>
-  //                 <Link className="signup" to="/signUp">Sign Up</Link>
-  //                 <Link className="signin" to="/signIn">Sign In</Link>
-  //             </nav>
-  //         </div>
-  //     </div>
-  //     <hr/>
-  //   </Fragment>
-    
-  // );
-
   return (
     <div className="header">
       <div className="bounds">
-        <h1 className="header--logo">MyAuth</h1>
+        <h1 className="header--logo">Courses</h1>
         <nav>
           {authorizedUser ? (
             <React.Fragment>
               <span>Welcome, {authorizedUser.firstName}!</span>
-              <Link to="/signout">Sign Out</Link>
+              <Link className="signOut" to="/signout">Sign Out</Link>
             </React.Fragment>
           ) : (
             <React.Fragment>
