@@ -21,7 +21,7 @@ export default class CourseDetail extends Component {
     
     async deleteCourse() {
         const id = this.props.match.params.id;
-        await this.props.context.data.deleteCourse(id);
+        await this.props.context.deleteCourse(id);   //ToDo Fix ths
     }    
   
   

@@ -17,16 +17,17 @@ import UserSignOut  from "./components/UserSignOut";
 import SecuredArea from "./components/SecuredArea";
 import PrivateRoute from "./components/PrivateRoute";
 import UpdateCourse from "./components/UpdateCourse";
+import CreateCourse from "./components/CreateCourse";
 
 const CoursesWithContext = withContext(Courses);
 const CourseDetailWithContext = withContext(CourseDetail);
+const CreateCourseWithContext = withContext(CreateCourse);
 const UserSignInWithContext = withContext(UserSignIn);
 const UserSignUpWithContext = withContext(UserSignUp);
 const UserSignOutWithContext = withContext(UserSignOut); 
 const HeaderWithContext = withContext(Header);
 const UpdateCourseWithContext = withContext(UpdateCourse);
 
-// const signInUserWithContext=  withContext(authorizedUser)
 
 class App extends Component {
 
@@ -39,10 +40,12 @@ class App extends Component {
           <HeaderWithContext />
           <Switch>
             {/* <Route exact path="/" render={ props => <Header title="Courses" {...props} />}/> */}
-            <Route path="/courses/new" render={ props => <Header title="New Course" {...props} />}/>
-            <Route path="/courses/:id" render={ props => <Header title="Course Detail" {...props} />}/>
+            {/* <Route path="/courses/new" render={ props => <Header title="New Course" {...props} />}/>
+            <Route path="/courses/:id" render={ props => <Header title="Course Detail" {...props} />}/> */}
             {/* <Route path="/" render={ props => <Header title="Adventures in Limbo" {...props} />}/> */}
             <PrivateRoute path="/courses/:id/update" component={UpdateCourseWithContext} />
+            <PrivateRoute path="/courses/create" component={CreateCourseWithContext} />
+
           </Switch>
           <Switch>
             <Route exact path="/" component={CoursesWithContext} />
@@ -51,6 +54,7 @@ class App extends Component {
             <Route path="/signIn" component={ UserSignInWithContext } />
             <Route path="/signUp" component={UserSignUpWithContext} />
             <Route path="/signOut" component={UserSignOutWithContext} />
+            
           </Switch>
 
         </div>

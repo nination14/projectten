@@ -3,14 +3,11 @@ import { Link } from 'react-router-dom';
 
 
 function Header(props) {
-  // const signInUserWithContext=  withContext(authorizedUser)
-  // HW: Who the authorized user is , can we get this from context, 
   const { context } = props;
   let authorizedUser = null;
 
   if( context ){
     authorizedUser =context.authorizedUser;
-    console.log(authorizedUser);
   }
   
   return (

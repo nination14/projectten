@@ -32,13 +32,29 @@ export class Provider extends Component {
         Cookies.remove('authorizedUser'); 
         
     }
+    
+    async deleteCourse(id) {
+        console.log(this.authorizedUser);
+        const username = this.authorizedUser.emailAddress;
+        const password = this.authorizedUser.password;
+        const credentials = {username, password };
+        const response = await this.data.api(`/courses/${id}`, 'DELETE', null, true, credentials);
+        if (response.status === 204) {
+            return response.json();
+        } else if (response.status === 401) {
+            return response.json().then(data =>{
+                return data.error;
+            });
+        }
+    }
 
     render() {
         const value = {
             data: this.data,
             authorizedUser: this.state.authorizedUser,
             signIn: (email, password) => this.signIn(email, password),
-            signOut: this.signOut
+            signOut: this.signOut,
+            deleteCourse: this.deleteCourse
         };
         return (
             <Context.Provider value={ value }>
