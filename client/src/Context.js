@@ -34,13 +34,12 @@ export class Provider extends Component {
     }
     
     async deleteCourse(id) {
-        console.log(this.authorizedUser);
         const username = this.authorizedUser.emailAddress;
         const password = this.authorizedUser.password;
         const credentials = {username, password };
         const response = await this.data.api(`/courses/${id}`, 'DELETE', null, true, credentials);
         if (response.status === 204) {
-            return response.json();
+            return [];
         } else if (response.status === 401) {
             return response.json().then(data =>{
                 return data.error;

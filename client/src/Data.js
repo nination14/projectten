@@ -74,15 +74,15 @@ export default class Data {
         }
     }
 
-    async deleteCourse(id, username, password) {
-        const credentials = { username, password, };
-        const response = await this.api(`/courses/${id}`, 'DELETE', credentials)
-        if (response.status === 204) {
-            return response.json();
-        } else if (response.status === 401) {
-            return response.status(401).json();
-        }
-    }
+    // async deleteCourse(id, username, password) {
+    //     const credentials = { username, password, };
+    //     const response = await this.api(`/courses/${id}`, 'DELETE', credentials)
+    //     if (response.status === 204) {
+    //         return response.json();
+    //     } else if (response.status === 401) {
+    //         return response.status(401).json();
+    //     }
+    // }
 
     async updateCourse(id, course, emailAddress, password) {
             const response = await this.api(`/courses/${id}`, 'PUT', course, true, { emailAddress, password });

@@ -78,8 +78,8 @@ class CreateCourse extends Component {
       } = this.state;
   
       const {
-        firstName, 
-        lastName
+        emailAddress, 
+        userPassword
       } = this.props.context.authenticatedUser;
   
   
@@ -107,7 +107,7 @@ class CreateCourse extends Component {
                           value={title}
                           onChange={this.change} />
                       </div>
-                      <p>By {`${firstName} ${lastName}`}</p>
+                      <p>By {`emailAddress`}</p>
                     </div>
                     <div className="course--description">
                       <div>
