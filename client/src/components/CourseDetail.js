@@ -14,6 +14,7 @@ export default class CourseDetail extends Component {
     }
 
     async componentDidMount() {
+        console.log(this.props.match.params);
         const id = this.props.match.params.id;
         const course = await this.props.context.data.getCourse(id);   
         this.setState({course});
@@ -21,7 +22,7 @@ export default class CourseDetail extends Component {
     
     async deleteCourse() {
         const id = this.props.match.params.id;
-        await this.props.context.deleteCourse(id);   //ToDo Fix ths
+        await this.props.context.deleteCourse(id);  
     }    
   
   

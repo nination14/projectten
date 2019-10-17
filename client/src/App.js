@@ -45,9 +45,6 @@ class App extends Component {
             {/* <Route path="/" render={ props => <Header title="Adventures in Limbo" {...props} />}/> */}
             <PrivateRoute path="/courses/:id/update" component={UpdateCourseWithContext} />
             <PrivateRoute path="/courses/create" component={CreateCourseWithContext} />
-
-          </Switch>
-          <Switch>
             <Route exact path="/" component={CoursesWithContext} />
             <Route path="/courses/:id" component={CourseDetailWithContext} />
             <PrivateRoute path="/area51" component={SecuredArea}/>
